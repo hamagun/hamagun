@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="준호">
+  <rect width="200" height="200" fill="#dfe8f6"/>
+  <!-- 목, 어깨 (셔츠) -->
+  <rect x="86" y="134" width="28" height="24" fill="#e9c3a6"/>
+  <path d="M36 200 C40 164 68 150 100 150 C132 150 160 164 164 200 Z" fill="#4a6c9c"/>
+  <path d="M88 150 L100 168 L112 150 Z" fill="#e9c3a6"/>
+  <!-- 얼굴 -->
+  <ellipse cx="100" cy="98" rx="42" ry="50" fill="#f0cfb5"/>
+  <!-- 짧은 머리 -->
+  <path d="M56 92 C52 52 78 34 102 34 C128 34 150 50 146 92 C142 74 130 62 112 60 C96 58 76 62 66 72 C60 78 58 84 56 92 Z" fill="#22201f"/>
+  <!-- 눈썹 -->
+  <path d="M72 88 L92 86" stroke="#22201f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M108 86 L128 88" stroke="#22201f" stroke-width="4" stroke-linecap="round"/>
+  <!-- 눈 -->
+  <ellipse cx="82" cy="101" rx="4.5" ry="5" fill="#22201f"/>
+  <ellipse cx="118" cy="101" rx="4.5" ry="5" fill="#22201f"/>
+  <circle cx="83.5" cy="99.5" r="1.4" fill="#fff"/>
+  <circle cx="119.5" cy="99.5" r="1.4" fill="#fff"/>
+  <!-- 코 -->
+  <path d="M100 106 L97 116 L103 116" stroke="#c89c7e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 입 -->
+  <path d="M90 126 Q100 131 110 126" stroke="#a5584a" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

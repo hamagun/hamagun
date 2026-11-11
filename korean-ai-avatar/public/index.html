@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>한국어 AI 대화</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- 1. 페르소나 선택 화면 -->
+    <section id="picker" class="screen">
+      <h1>누구와 이야기할까요?</h1>
+      <p class="sub">대화 상대를 골라주세요. 언제든 바꿀 수 있어요.</p>
+      <div id="persona-list" class="persona-list"></div>
+    </section>
+
+    <!-- 2. 대화 화면 -->
+    <section id="chat" class="screen hidden">
+      <header class="chat-header">
+        <button id="back" class="icon-btn" aria-label="상대 바꾸기">←</button>
+        <img id="chat-avatar" class="avatar small" alt="" />
+        <div>
+          <div id="chat-name" class="name"></div>
+          <div id="chat-status" class="status">대화 중</div>
+        </div>
+        <button id="reset" class="text-btn">새 대화</button>
+      </header>
+
+      <div class="stage">
+        <img id="stage-avatar" class="avatar large" alt="" />
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite"></div>
+
+      <form id="composer" class="composer">
+        <textarea id="input" rows="1" maxlength="2000" placeholder="메시지를 입력하세요" autocomplete="off"></textarea>
+        <button id="send" type="submit">보내기</button>
+      </form>
+    </section>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

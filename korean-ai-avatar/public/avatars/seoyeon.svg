@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="서연">
+  <rect width="200" height="200" fill="#fde4ea"/>
+  <!-- 뒷머리 (긴 생머리) -->
+  <path d="M42 100 C40 50 70 28 100 28 C130 28 160 50 158 100 L162 178 L38 178 Z" fill="#3a2a25"/>
+  <!-- 목, 어깨 -->
+  <rect x="86" y="132" width="28" height="26" fill="#f2cdb4"/>
+  <path d="M40 200 C44 166 70 152 100 152 C130 152 156 166 160 200 Z" fill="#f4a9bb"/>
+  <!-- 얼굴 -->
+  <ellipse cx="100" cy="98" rx="44" ry="50" fill="#f7d9c4"/>
+  <!-- 앞머리 -->
+  <path d="M56 86 C58 52 82 40 104 42 C128 44 146 60 144 86 C130 70 112 64 96 66 C80 68 66 76 56 86 Z" fill="#3a2a25"/>
+  <!-- 눈 -->
+  <ellipse cx="82" cy="100" rx="5" ry="6" fill="#2a1d1a"/>
+  <ellipse cx="118" cy="100" rx="5" ry="6" fill="#2a1d1a"/>
+  <circle cx="84" cy="98" r="1.6" fill="#fff"/>
+  <circle cx="120" cy="98" r="1.6" fill="#fff"/>
+  <!-- 볼 -->
+  <ellipse cx="72" cy="116" rx="8" ry="4.5" fill="#f4a3a8" opacity="0.6"/>
+  <ellipse cx="128" cy="116" rx="8" ry="4.5" fill="#f4a3a8" opacity="0.6"/>
+  <!-- 입 -->
+  <path d="M90 124 Q100 132 110 124" stroke="#c9566a" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

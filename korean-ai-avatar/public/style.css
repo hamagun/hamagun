@@ -1,0 +1,202 @@
+:root {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --border: #e3e1dc;
+  --female: #e8728f;
+  --male: #4a7fd1;
+  --accent: var(--female);
+  --user-bubble: #1d1d1f;
+  --user-text: #ffffff;
+  --error: #c0392b;
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141416;
+    --surface: #1f1f23;
+    --text: #f2f2f4;
+    --muted: #9a9aa2;
+    --border: #2e2e34;
+    --user-bubble: #f2f2f4;
+    --user-text: #141416;
+    --error: #ff7b6b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hidden { display: none !important; }
+
+.screen {
+  max-width: 720px;
+  margin: 0 auto;
+  height: 100dvh;
+  padding: 16px;
+}
+
+/* ---------- 페르소나 선택 ---------- */
+#picker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 { font-size: 1.6rem; margin: 0 0 8px; }
+.sub { color: var(--muted); margin: 0 0 32px; }
+
+.persona-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.persona-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 24px 16px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.persona-card:hover, .persona-card:focus-visible { transform: translateY(-3px); outline: none; }
+.persona-card.female:hover, .persona-card.female:focus-visible { border-color: var(--female); }
+.persona-card.male:hover, .persona-card.male:focus-visible { border-color: var(--male); }
+.persona-card .avatar { width: 120px; height: 120px; }
+.persona-card .name { font-size: 1.25rem; font-weight: 700; margin-top: 12px; }
+.persona-card .meta { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+.persona-card .tagline { color: var(--muted); margin-top: 6px; font-size: 0.95rem; }
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--border);
+}
+.avatar.small { width: 40px; height: 40px; }
+
+/* ---------- 대화 화면 ---------- */
+#chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#chat[data-gender="male"] { --accent: var(--male); }
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.chat-header .name { font-weight: 700; }
+.chat-header .status { font-size: 0.8rem; color: var(--muted); }
+.chat-header .text-btn { margin-left: auto; }
+
+.icon-btn, .text-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+}
+.avatar.large {
+  width: 132px;
+  height: 132px;
+  border: 4px solid var(--accent);
+  transition: box-shadow 0.3s;
+}
+/* 응답 생성 중에는 아바타가 말하는 것처럼 빛나게 (3단계에서 립싱크로 교체 예정) */
+#chat.speaking .avatar.large { animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); }
+  50% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #chat.speaking .avatar.large { animation: none; box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 35%, transparent); }
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 2px;
+}
+
+.bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.bubble.assistant {
+  align-self: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 6px;
+}
+.bubble.user {
+  align-self: flex-end;
+  background: var(--user-bubble);
+  color: var(--user-text);
+  border-bottom-right-radius: 6px;
+}
+.bubble.error { color: var(--error); border-color: var(--error); }
+.bubble.typing::after {
+  content: "…";
+  display: inline-block;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.composer {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.composer textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 10px 14px;
+  font: inherit;
+  background: var(--surface);
+  color: inherit;
+  line-height: 1.4;
+}
+.composer textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.composer button {
+  border: none;
+  border-radius: 18px;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.composer button:disabled { opacity: 0.5; cursor: default; }
